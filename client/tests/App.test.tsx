@@ -54,7 +54,7 @@ describe('App', () => {
     await user.click(await screen.findByRole('button', { name: 'Edit Milk' }));
     await user.clear(screen.getByLabelText('Title'));
     await user.type(screen.getByLabelText('Title'), 'Oat milk');
-    await user.click(screen.getByRole('button', { name: 'Save changes'}))
+    await user.click(screen.getByRole('button', { name: 'Save changes' }));
 
     expect(api.updateNote).toHaveBeenCalledWith('1', {
       title: 'Oat milk',

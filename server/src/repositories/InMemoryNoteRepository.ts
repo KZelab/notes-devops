@@ -27,16 +27,15 @@ export class InMemoryNoteRepository implements NoteRepository {
 
   async update(id: string, input: NoteInput): Promise<Note | undefined> {
     const existing = this.notes.get(id);
-    if(!existing)
-    {
-        return undefined;
+    if (!existing) {
+      return undefined;
     }
     const updated: Note = {
-        ...existing, 
-        title: input.title,
-        body: input.body,
-        updatedAt: new Date().toISOString(),
-       };
+      ...existing,
+      title: input.title,
+      body: input.body,
+      updatedAt: new Date().toISOString(),
+    };
     this.notes.set(id, updated);
     return updated;
   }

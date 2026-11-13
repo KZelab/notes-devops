@@ -23,30 +23,27 @@ export function createNotesRouter(repository: NoteRepository): Router {
 
   router.put('/:id', async (req, res) => {
     const result = validateNoteInput(req.body);
-    if(!result.ok)
-    {
-        res.status(400).json({errors: result.errors})
-        return;
+    if (!result.ok) {
+      res.status(400).json({ errors: result.errors });
+      return;
     }
     // TODO: validate req.body, answer 400 with the errors if invalid
     const note = await repository.update(req.params.id, result.value);
     // TODO: update the note, answer 404 if it does not exist
-    if(!note)
-    {
-        res.status(404).json({errors: ['Note not found']});
-        return;
+    if (!note) {
+      res.status(404).json({ errors: ['Note not found'] });
+      return;
     }
     // TODO: otherwise answer with the updated note
-    res.status(204).end();
+    res.json(note);
   });
 
   router.delete('/:id', async (req, res) => {
     // TODO: delete the note, answer 404 if nothing was deleted
     const deleted = await repository.delete(req.params.id);
-    if(!deleted)
-    {
-        res.status(404).json({errors: ['Note not found']});
-        return;
+    if (!deleted) {
+      res.status(404).json({ errors: ['Note not found'] });
+      return;
     }
     // TODO: otherwise answer 204 with no body
     res.status(204).end();
