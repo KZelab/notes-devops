@@ -7,13 +7,11 @@ export function createNoteRepository(storeType: string): NoteRepository {
   // TODO: 'memory' returns a new InMemoryNoteRepository
   // TODO: anything else throws an Error naming the unknown store type
 
-  switch(storeType)
-  {
-    case 'memory': 
-    return new InMemoryNoteRepository();
+  switch (storeType) {
+    case 'memory':
+      return new InMemoryNoteRepository();
 
     default:
-        throw new Error(`Unknown store type: ${storeType}`)
+      throw new Error(`Unknown store type: ${storeType}`);
   }
-
 }

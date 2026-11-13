@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": [ "node"],
+    "types": ["node"],
     "target": "ES2022",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
